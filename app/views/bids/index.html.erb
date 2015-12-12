@@ -1,0 +1,13 @@
+<h2>Bids by User</h2>
+<% auction_ant = 0 %>
+<% @bids.each do |bid| %>
+  <% user = User.find_by_id(bid.user_id) %>
+  <% auction_atu =  Auction.find_by_id(bid.auction_id) %>
+  <% if  auction_ant != auction_atu %>
+    <hr>
+    <h3><%= "#{auction_atu.title}"%></h3>
+    <% auction_ant = auction_atu %>
+  <% end %>
+   <h4><%= "$ #{bid.amount}" %><%= ":  #{user.first_name}" %><%= "   #{user.last_name}" %></h4>
+<% end %>
+</div>
